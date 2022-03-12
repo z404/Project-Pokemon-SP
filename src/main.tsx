@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./App";
+import { UserContext } from "./userstore";
+
+function Main() {
+  const [username, setUsername] = useState("");
+  return (
+    <UserContext.Provider value={{ username, setUsername }}>
+      <App />
+    </UserContext.Provider>
+  );
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Main />
   </React.StrictMode>,
   document.getElementById("root")
 );
